@@ -7,8 +7,12 @@ class UserController {
         this.tableEl = document.getElementById(tableId);
 
         this.onSubmit();
-
+      
     }//Fim do construct
+
+    getButton(){
+        return this.formEl.querySelector("[type=submit]");        
+    }
 
     onSubmit() {
         this.formEl.addEventListener("submit", event => {
@@ -16,16 +20,24 @@ class UserController {
 
             let values = this.getValues();
 
+            
+            this.getButton().disabled = true;
+
             this.getPhoto().then(
                 (content) => {
                     values.photo = content;
 
                     this.addLine(values);
+
+                    this.formEl.reset();
+                    this.getButton().disabled = false;
+
                 },
                 (e) => {
                     console.error(e);
                 }
             );
+            btnSubmit.disabled = false;
         });
     }//Fechando onSubmit()
 
