@@ -20,6 +20,7 @@ class UserController {
 
             let values = this.getValues();
 
+            if(!values) return false;
             
             this.getButton().disabled = true;
 
@@ -36,8 +37,7 @@ class UserController {
                 (e) => {
                     console.error(e);
                 }
-            );
-            this.getButton().disabled = false;
+            );            
         });
     }//Fechando onSubmit()
 
