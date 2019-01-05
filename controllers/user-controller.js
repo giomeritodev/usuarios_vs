@@ -90,7 +90,7 @@ class UserController {
                 (content) => {
                     values.photo = content;
 
-                    this.insert(dataUser);
+                    this.insert(values);
 
                     this.addLine(values);
 
